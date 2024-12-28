@@ -172,12 +172,17 @@ function addBookToCompleted(bookElement){
     }
     bookElement.remove();
 
+    refreshDataFromBooks();
+
     updateDataToStorage();
 };
 
 function refreshDataFromBooks() {
     const listUncompleted = document.getElementById(INCOMPLETE_BOOKLIST);
     const listCompleted = document.getElementById(COMPLETE_BOOK_LIST);
+// mencegah duplikasi element html books
+    listUncompleted.innerHTML = '';
+    listCompleted.innerHTML = '';
 
     for(const book of books){
         const newBook = makeBook(book.title, book.author, book.year, book.isComplete);
