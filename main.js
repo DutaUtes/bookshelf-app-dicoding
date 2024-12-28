@@ -155,7 +155,7 @@ function addBookToCompleted(bookElement){
         const newBook = makeBook(bookTitled, bookAuthored, bookYeared, true)
 
         const book = findBook(bookElement[BOOK_ITEMID]);
-        book.isCompleted = true;
+        book.isComplete = true;
         newBook[BOOK_ITEMID] = book.id;
 
         const completeBookList = document.getElementById(COMPLETE_BOOK_LIST);
@@ -164,7 +164,7 @@ function addBookToCompleted(bookElement){
         const newBook = makeBook(bookTitled, bookAuthored, bookYeared, false)
 
         const book = findBook(bookElement[BOOK_ITEMID]);
-        book.isCompleted = false;
+        book.isComplete = false;
         newBook[BOOK_ITEMID] = book.id; 
 
         const incompleteBookList = document.getElementById(INCOMPLETE_BOOKLIST);
@@ -180,10 +180,10 @@ function refreshDataFromBooks() {
     const listCompleted = document.getElementById(COMPLETE_BOOK_LIST);
 
     for(const book of books){
-        const newBook = makeBook(book.title, book.author, book.year, book.isCompleted);
+        const newBook = makeBook(book.title, book.author, book.year, book.isComplete);
         newBook[BOOK_ITEMID] = book.id;
 
-        if(book.isCompleted == false){
+        if(book.isComplete == false){
             listUncompleted.append(newBook);
         } else {
             listCompleted.append(newBook);
@@ -242,13 +242,13 @@ function makeId() {
     return idGenerator;
 };
 
-function composeBookObject(title, author, year, isCompleted) {
+function composeBookObject(title, author, year, isComplete) {
     return {
         id: makeId(),
         title,
         author,
         year,
-        isCompleted
+        isComplete
     };
 };
 
